@@ -1,14 +1,39 @@
 import Nav from 'components/Nav';
 import { ROUTES } from 'constants/routes';
 import { THEME } from 'constants/theme';
+import AppContext from 'contexts/AppContext';
 import NewProduct from 'pages/Product/NewProduct';
 import ProductList from 'pages/Product/ProductList';
 import { Component } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { navigate } from 'utils/navigate';
 
-export default class App extends Component {
+interface AppState {
+  productsIdToDelete: string[];
+}
+
+export default class App extends Component<{}, AppState> {
+  state = {
+    productsIdToDelete: [],
+  };
+
+  updateProductIdArr = (add = true, sku: string) => {
+    if (!add) {
+      this.setState((prevState: AppState) => ({
+        productsIdToDelete: prevState.productsIdToDelete.filter(
+          (id) => id !== sku
+        ),
+      }));
+    } else {
+      this.setState((prevState: AppState) => ({
+        productsIdToDelete: [...prevState.productsIdToDelete, sku],
+      }));
+    }
+  };
+
   render() {
+    const { productsIdToDelete } = this.state;
+
     const fetchRoute = () => {
       switch (window.location.pathname) {
         case ROUTES.PRODUCTS:
@@ -25,8 +50,15 @@ export default class App extends Component {
 
     return (
       <ThemeProvider theme={THEME}>
-        <Nav />
-        {fetchRoute()}
+        <AppContext.Provider
+          value={{
+            productsIdToDelete,
+            updateProductIdArr: this.updateProductIdArr,
+          }}
+        >
+          <Nav />
+          {fetchRoute()}
+        </AppContext.Provider>
       </ThemeProvider>
     );
   }

@@ -6,11 +6,19 @@ const NavWrapper = styled.nav`
   display: flex;
   align-items: center;
   padding-inline: 35px;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 100;
+  @media only screen and (max-width: 370px) {
+    padding-inline: 17px;
+  }
 
   h3 {
     color: ${({ theme }) => theme.colors.secondary};
     font-size: 20px;
     font-weight: 700;
+    cursor: pointer;
   }
 `;
 

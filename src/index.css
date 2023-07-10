@@ -7,8 +7,8 @@
 }
 
 *::selection {
-  background-color: green;
-  color: blue;
+  background-color: #f37878;
+  color: white;
 }
 
 html {
