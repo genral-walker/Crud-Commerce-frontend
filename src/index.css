@@ -51,6 +51,24 @@ select:focus {
   border-color: #e04f4f;
 }
 
+button,
+button:hover,
+button:focus {
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  padding-inline: 30px;
+  height: 35px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #f37878;
+}
+
+
+
 input::placeholder {
   font-size: 14px !important;
   color: #10132c;

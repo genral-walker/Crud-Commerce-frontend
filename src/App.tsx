@@ -1,20 +1,32 @@
+import Nav from 'components/Nav';
 import { ROUTES } from 'constants/routes';
 import { THEME } from 'constants/theme';
 import NewProduct from 'pages/Product/NewProduct';
 import ProductList from 'pages/Product/ProductList';
 import { Component } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import { navigate } from 'utils/navigate';
 
 export default class App extends Component {
   render() {
+    const fetchRoute = () => {
+      switch (window.location.pathname) {
+        case ROUTES.PRODUCTS:
+          return <ProductList />;
+
+        case ROUTES.NEW_PRODUCT:
+          return <NewProduct />;
+
+        default:
+          navigate(ROUTES.PRODUCTS);
+          break;
+      }
+    };
+
     return (
       <ThemeProvider theme={THEME}>
-        <Routes>
-          <Route path={ROUTES.PRODUCTS} Component={ProductList} />
-          <Route path={ROUTES.NEW_PRODUCT} Component={NewProduct} />
-          <Route path={'*'} element={<Navigate to={ROUTES.PRODUCTS} />} />
-        </Routes>
+        <Nav />
+        {fetchRoute()}
       </ThemeProvider>
     );
   }
