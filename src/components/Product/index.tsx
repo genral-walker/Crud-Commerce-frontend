@@ -40,7 +40,7 @@ export default class Product extends Component<ProductProps> {
         </h3>
 
         <p>
-          <span>Size</span> <span>{price} $</span>
+          <span>Price</span> <span>{price} $</span>
         </p>
 
         {productType === 'dvd' && (

@@ -22,9 +22,13 @@ const ProductWrapper = styled.div`
     color: ${({ theme }) => theme.colors.textLight};
 
     span {
+      &:first-of-type {
+        align-self: flex-start;
+      }
+
       &:last-of-type {
         text-align: right;
-
+        width: 75%;
         font-weight: 600;
         color: ${({ theme }) => theme.colors.text};
       }

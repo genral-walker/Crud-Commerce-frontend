@@ -13,4 +13,5 @@ export interface ProductProps {
 export interface AppContextType {
   productsIdToDelete: string[];
   updateProductIdArr: (add: boolean, sku: string) => void;
+  products: ProductProps[];
 }
