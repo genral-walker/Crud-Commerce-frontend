@@ -32,16 +32,20 @@ export default class ProductList extends Component {
     const { productsIdToDelete, products, setProducts } = this
       .context as AppContextType;
 
-    try {
-      this.setState({ deleteLoading: true });
-      await api('/product/delete', 'DELETE', productsIdToDelete);
-      setProducts(
-        products.filter((product) => !productsIdToDelete.includes(product.sku))
-      );
-    } catch (error) {
-      console.log(error);
-    } finally {
-      this.setState({ deleteLoading: false });
+    if (productsIdToDelete.length) {
+      try {
+        this.setState({ deleteLoading: true });
+        await api('/product/delete', 'DELETE', productsIdToDelete);
+        setProducts(
+          products.filter(
+            (product) => !productsIdToDelete.includes(product.sku)
+          )
+        );
+      } catch (error) {
+        console.log(error);
+      } finally {
+        this.setState({ deleteLoading: false });
+      }
     }
   };
 
@@ -50,7 +54,7 @@ export default class ProductList extends Component {
   }
 
   render() {
-    const { productsIdToDelete, products } = this.context as AppContextType;
+    const { products } = this.context as AppContextType;
     return (
       <ProductListWrapper deleteLoading={this.state.deleteLoading}>
         <div>
@@ -58,7 +62,7 @@ export default class ProductList extends Component {
           <div>
             <button onClick={() => navigate(ROUTES.NEW_PRODUCT)}>ADD</button>
             <button
-              disabled={!productsIdToDelete.length || this.state.deleteLoading}
+              disabled={this.state.deleteLoading}
               onClick={this.deleteProducts}
             >
               MASS DELETE
