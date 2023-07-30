@@ -2,13 +2,48 @@ import { Component } from 'react';
 import { NewProductWrapper } from './styles';
 import { navigate } from 'utils/navigate';
 import { ROUTES } from 'constants/routes';
+import api from 'utils/api';
+import { StringDecoder } from 'string_decoder';
 
 interface NewProductState {
   switcherType: 'dvd' | 'book' | 'furniture';
+  addLoading: boolean;
 }
 export default class NewProduct extends Component {
   state: NewProductState = {
     switcherType: 'dvd',
+    addLoading: false,
+  };
+
+  addProduct = async (evt: React.FormEvent<HTMLFormElement>) => {
+    evt.preventDefault();
+
+    const getElmValue = (id: string): string | undefined => {
+      const doc = document.getElementById(id) as HTMLInputElement;
+      return doc?.value;
+    };
+
+    const data = {
+      sku: getElmValue('sku'),
+      name: getElmValue('name'),
+      price: Number(getElmValue('price')),
+      productType: this.state.switcherType,
+      size: Number(getElmValue('size')) ?? null,
+      weight: Number(getElmValue('weight')) ?? null,
+      width: Number(getElmValue('width')) ?? null,
+      height: Number(getElmValue('height')) ?? null,
+      length: Number(getElmValue('length')) ?? null,
+    };
+
+    try {
+      this.setState({ addLoading: true });
+      await api('/product/saveApi', 'POST', data);
+      navigate(ROUTES.PRODUCTS);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      this.setState({ addLoading: false });
+    }
   };
 
   render() {
@@ -17,7 +52,7 @@ export default class NewProduct extends Component {
     return (
       <NewProductWrapper>
         <h2>Product Add</h2>
-        <form onSubmit={(evt) => evt.preventDefault()} id="product_form">
+        <form onSubmit={this.addProduct} id="product_form">
           <div>
             <p>SKU</p>
             <input

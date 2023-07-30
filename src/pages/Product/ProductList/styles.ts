@@ -1,7 +1,12 @@
 import { styled } from 'styled-components';
 
-const ProductListWrapper = styled.div`
+interface ProductListProps {
+  deleteLoading: boolean;
+}
+
+const ProductListWrapper = styled.div<ProductListProps>`
   padding: 30px 35px;
+  pointer-events: ${({ deleteLoading }) => (deleteLoading ? 'none' : '')};
   @media only screen and (max-width: 370px) {
     padding: 30px 17px;
   }
@@ -49,6 +54,10 @@ const ProductListWrapper = styled.div`
         &:last-of-type {
           &:hover {
             background-color: #eb4141;
+          }
+          &:disabled {
+            background-color: #c9c9c9;
+            pointer-events: none;
           }
         }
       }

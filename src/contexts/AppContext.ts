@@ -5,6 +5,7 @@ const AppContext = createContext({
   productsIdToDelete: [],
   updateProductIdArr: () => {},
   products: [],
+  setProducts: () => {},
 } as AppContextType);
 
 export default AppContext;
