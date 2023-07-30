@@ -3,7 +3,6 @@ import { NewProductWrapper } from './styles';
 import { navigate } from 'utils/navigate';
 import { ROUTES } from 'constants/routes';
 import api from 'utils/api';
-import { StringDecoder } from 'string_decoder';
 
 interface NewProductState {
   switcherType: 'dvd' | 'book' | 'furniture';
