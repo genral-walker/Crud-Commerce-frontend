@@ -5,12 +5,12 @@ import { ROUTES } from 'constants/routes';
 import api from 'utils/api';
 
 interface NewProductState {
-  switcherType: 'dvd' | 'book' | 'furniture';
+  switcherType?: 'dvd' | 'book' | 'furniture';
   addLoading: boolean;
 }
 export default class NewProduct extends Component {
   state: NewProductState = {
-    switcherType: 'dvd',
+    switcherType: undefined,
     addLoading: false,
   };
 
@@ -84,6 +84,7 @@ export default class NewProduct extends Component {
                 this.setState({ switcherType: evt.target.value })
               }
               id="productType"
+              defaultValue={''}
             >
               <option value={'dvd'}>DVD</option>
               <option value={'book'}>Book</option>
