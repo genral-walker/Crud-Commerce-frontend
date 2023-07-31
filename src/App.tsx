@@ -19,19 +19,7 @@ interface AppState {
 export default class App extends Component<{}, AppState> {
   state = {
     productsIdToDelete: [],
-    products: [
-      {
-        sku: 'Excepturi vero aliqu',
-        name: 'Hilel Mckinney',
-        price: '367.00',
-        productType: 'book',
-        size: null,
-        weight: 34,
-        height: null,
-        length: null,
-        width: null,
-      } as ProductProps,
-    ],
+    products: [],
     pathName: ROUTES.PRODUCTS as string,
   };
 
@@ -77,6 +65,22 @@ export default class App extends Component<{}, AppState> {
   };
 
   componentDidMount() {
+    this.setState({
+      products: [
+        {
+          sku: 'Excepturi vero aliqu',
+          name: 'Hilel Mckinney',
+          price: '367.00',
+          productType: 'book',
+          size: null,
+          weight: 34,
+          height: null,
+          length: null,
+          width: null,
+        },
+      ],
+    });
+
     navigate(ROUTES.PRODUCTS);
 
     this.fetchProducts();

@@ -29,7 +29,6 @@ export default class Product extends Component<ProductProps> {
           onChange={({ target: { checked } }) =>
             updateProductIdArr(checked, sku)
           }
-          style={{ display: sku ? 'block' : 'none' }}
         />
 
         <h3>
