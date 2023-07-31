@@ -3,7 +3,7 @@ const dev = {
 };
 
 const prod = {
-  BASE_URL: '',
+  BASE_URL: 'https://scandiweb-test.kreatixtech.com',
 };
 
 const config = process.env.REACT_APP_STAGE === 'production' ? prod : dev;
