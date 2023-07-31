@@ -19,7 +19,19 @@ interface AppState {
 export default class App extends Component<{}, AppState> {
   state = {
     productsIdToDelete: [],
-    products: [],
+    products: [
+      {
+        sku: 'Excepturi vero aliqu',
+        name: 'Hilel Mckinney',
+        price: '367.00',
+        productType: 'book',
+        size: null,
+        weight: 34,
+        height: null,
+        length: null,
+        width: null,
+      } as ProductProps,
+    ],
     pathName: ROUTES.PRODUCTS as string,
   };
 

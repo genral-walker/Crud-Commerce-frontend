@@ -1,13 +1,13 @@
 export interface ProductProps {
   sku: string;
   name: string;
-  price: string;
+  price: string | number;
   productType: 'dvd' | 'book' | 'furniture';
-  size: number;
-  height: number;
-  width: number;
-  length: number;
-  weight: number;
+  size: number | null;
+  height: number | null;
+  width: number | null;
+  length: number | null;
+  weight: number | null;
 }
 
 export interface AppContextType {
