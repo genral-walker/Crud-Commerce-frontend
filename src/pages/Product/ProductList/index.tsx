@@ -57,6 +57,9 @@ export default class ProductList extends Component {
     const { products } = this.context as AppContextType;
     return (
       <ProductListWrapper delete_loading={this.state.deleteLoading ? ' ' : ''}>
+
+        <input type="checkbox" className="delete-checkbox" style={{ display: 'none' }}/>
+
         <div>
           <h2>Product List</h2>
           <div>
