@@ -50,20 +50,20 @@ export default class ProductList extends Component {
   };
 
   componentDidMount() {
-    const { setProducts } = this.context as AppContextType;
-    setProducts([
-      {
-        sku: 'Excepturi vero aliqu',
-        name: 'Hilel Mckinney',
-        price: '367.00',
-        productType: 'book',
-        size: null,
-        weight: 34,
-        height: null,
-        length: null,
-        width: null,
-      },
-    ]);
+    // const { setProducts } = this.context as AppContextType;
+    // setProducts([
+    //   {
+    //     sku: 'Excepturi vero aliqu',
+    //     name: 'Hilel Mckinney',
+    //     price: '367.00',
+    //     productType: 'book',
+    //     size: null,
+    //     weight: 34,
+    //     height: null,
+    //     length: null,
+    //     width: null,
+    //   },
+    // ]);
     // The above was added to pass the test
 
     this.fetchProducts();

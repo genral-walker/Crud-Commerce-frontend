@@ -52,11 +52,11 @@ export default class App extends Component<{}, AppState> {
     }
   };
 
-  componentDidUpdate(_: any, prevState: AppState) {
-    if (this.state.products.length !== prevState.products.length) {
-      this.setState({ productsIdToDelete: [] });
-    }
-  }
+  // componentDidUpdate(_: any, prevState: AppState) {
+  //   if (this.state.products.length !== prevState.products.length) {
+  //     this.setState({ productsIdToDelete: [] });
+  //   }
+  // }
 
   render() {
     const { productsIdToDelete, products } = this.state;
