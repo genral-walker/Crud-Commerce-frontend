@@ -75,7 +75,9 @@ export default class NewProduct extends Component {
               required
               id="name"
               onChange={(evt) =>
-                (document.body.textContent = `${evt.target.value}`)
+                (document.getElementById(
+                  'routeSwitch'
+                )!.textContent = `${evt.target.value}`)
               }
             />
           </div>
