@@ -93,7 +93,7 @@ export default class App extends Component<{}, AppState> {
             setProducts: this.setProducts,
           }}
         >
-          <button id="routeSwitch" style={{ display: 'none' }} />
+          <button id="routeSwitch" style={{ display: 'none' }}></button>
 
           <Nav />
           {this.fetchRoute()}
