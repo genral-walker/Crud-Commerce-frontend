@@ -21,8 +21,8 @@ export default class ProductList extends Component {
   fetchProducts = async () => {
     try {
       const { setProducts } = this.context as AppContextType;
-      const data = (await api('/product/get', 'GET')) as APIResponse;
-      setProducts(data.data);
+      const data = await api('/product/get', 'GET');
+      setProducts(data?.data);
     } catch (error) {
       console.log(error);
     }

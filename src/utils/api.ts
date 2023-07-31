@@ -1,4 +1,5 @@
 import config from 'constants/config';
+import { APIResponse } from 'types';
 
 const api = async (
   URL: string,
@@ -15,10 +16,8 @@ const api = async (
       body: method !== 'GET' && data ? JSON.stringify(data) : undefined,
     });
 
-    if (method === 'GET') {
-      const result = await response.json();
-      return result;
-    }
+    const result = (await response.json()) as APIResponse;
+    return result;
   } catch (error) {
     console.error('Error:', error);
   }

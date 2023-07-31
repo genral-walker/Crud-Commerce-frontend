@@ -3,6 +3,7 @@ import { NewProductWrapper } from './styles';
 import { navigate } from 'utils/navigate';
 import { ROUTES } from 'constants/routes';
 import api from 'utils/api';
+import { APIResponse } from 'types';
 
 interface NewProductState {
   switcherType: 'dvd' | 'book' | 'furniture';
@@ -36,8 +37,8 @@ export default class NewProduct extends Component {
 
     try {
       this.setState({ addLoading: true });
-      await api('/product/saveApi', 'POST', data);
-      navigate(ROUTES.PRODUCTS);
+      const res = await api('/product/saveApi', 'POST', data);
+      res?.status === 400 ? alert(res.message) : navigate(ROUTES.PRODUCTS);
     } catch (error) {
       console.log(error);
     } finally {
