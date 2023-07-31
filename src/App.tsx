@@ -6,8 +6,7 @@ import NewProduct from 'pages/Product/NewProduct';
 import ProductList from 'pages/Product/ProductList';
 import { Component } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { APIResponse, ProductProps } from 'types';
-import api from 'utils/api';
+import { ProductProps } from 'types';
 import { navigate } from 'utils/navigate';
 
 interface AppState {
@@ -37,15 +36,6 @@ export default class App extends Component<{}, AppState> {
     }
   };
 
-  fetchProducts = async () => {
-    try {
-      const data = (await api('/product/get', 'GET')) as APIResponse;
-      this.setState({ products: data.data as ProductProps[] });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   setProducts = (products: ProductProps[]) => {
     this.setState({ products });
   };
@@ -65,27 +55,6 @@ export default class App extends Component<{}, AppState> {
   };
 
   componentDidMount() {
-    this.setState({
-      products: [
-        {
-          sku: 'Excepturi vero aliqu',
-          name: 'Hilel Mckinney',
-          price: '367.00',
-          productType: 'book',
-          size: null,
-          weight: 34,
-          height: null,
-          length: null,
-          width: null,
-        },
-      ],
-    });
-    // The above was added to pass the test
-
-    navigate(ROUTES.PRODUCTS);
-
-    this.fetchProducts();
-
     document.getElementById('routeSwitch')?.addEventListener('click', () => {
       this.setState({ pathName: window.location.pathname });
     });
@@ -110,7 +79,7 @@ export default class App extends Component<{}, AppState> {
             setProducts: this.setProducts,
           }}
         >
-          <button id="routeSwitch" style={{ display: 'none' }}></button>
+          <button id="routeSwitch" style={{ display: 'none' }} />
 
           <Nav />
           {this.fetchRoute()}
