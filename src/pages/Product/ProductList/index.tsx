@@ -56,7 +56,7 @@ export default class ProductList extends Component {
   render() {
     const { products } = this.context as AppContextType;
     return (
-      <ProductListWrapper deleteLoading={this.state.deleteLoading}>
+      <ProductListWrapper delete_loading={this.state.deleteLoading ? ' ' : ''}>
         <div>
           <h2>Product List</h2>
           <div>

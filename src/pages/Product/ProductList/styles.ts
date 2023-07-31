@@ -1,12 +1,12 @@
 import { styled } from 'styled-components';
 
 interface ProductListProps {
-  deleteLoading: boolean;
+  delete_loading: string;
 }
 
 const ProductListWrapper = styled.div<ProductListProps>`
   padding: 30px 35px;
-  pointer-events: ${({ deleteLoading }) => (deleteLoading ? 'none' : '')};
+  pointer-events: ${({ delete_loading }) => (delete_loading ? 'none' : '')};
   @media only screen and (max-width: 370px) {
     padding: 30px 17px;
   }
