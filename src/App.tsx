@@ -55,6 +55,8 @@ export default class App extends Component<{}, AppState> {
   };
 
   componentDidMount() {
+    navigate(ROUTES.PRODUCTS);
+
     document.getElementById('routeSwitch')?.addEventListener('click', () => {
       this.setState({ pathName: window.location.pathname });
     });

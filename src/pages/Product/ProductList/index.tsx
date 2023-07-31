@@ -69,10 +69,10 @@ export default class ProductList extends Component {
     this.fetchProducts();
   }
 
-  componentWillUnmount(): void {
-    const { setProducts } = this.context as AppContextType;
-    setProducts([]);
-  }
+  // componentWillUnmount(): void {
+  //   const { setProducts } = this.context as AppContextType;
+  //   setProducts([]);
+  // }
 
   render() {
     const { products } = this.context as AppContextType;
