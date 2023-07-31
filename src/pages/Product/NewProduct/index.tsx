@@ -3,12 +3,16 @@ import { NewProductWrapper } from './styles';
 import { navigate } from 'utils/navigate';
 import { ROUTES } from 'constants/routes';
 import api from 'utils/api';
+import AppContext from 'contexts/AppContext';
+import { AppContextType } from 'types';
 
 interface NewProductState {
   switcherType: 'dvd' | 'book' | 'furniture';
   addLoading: boolean;
 }
 export default class NewProduct extends Component {
+  static contextType = AppContext;
+
   state: NewProductState = {
     switcherType: 'dvd',
     addLoading: false,
@@ -16,6 +20,8 @@ export default class NewProduct extends Component {
 
   addProduct = async (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
+
+    const { products, setProducts } = this.context as AppContextType;
 
     const getElmValue = (id: string): string | undefined => {
       const doc = document.getElementById(id) as HTMLInputElement;
@@ -37,6 +43,7 @@ export default class NewProduct extends Component {
     try {
       this.setState({ addLoading: true });
       await api('/product/saveApi', 'POST', data);
+      setProducts([data, ...products]);
       navigate(ROUTES.PRODUCTS);
     } catch (error) {
       console.log(error);

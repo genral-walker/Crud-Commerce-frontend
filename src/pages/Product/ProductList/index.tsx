@@ -4,7 +4,7 @@ import { ROUTES } from 'constants/routes';
 import { navigate } from 'utils/navigate';
 import Product from 'components/Product';
 import AppContext from 'contexts/AppContext';
-import { APIResponse, AppContextType } from 'types';
+import { AppContextType } from 'types';
 import api from 'utils/api';
 
 interface ProductListState {
@@ -16,16 +16,6 @@ export default class ProductList extends Component {
 
   state: ProductListState = {
     deleteLoading: false,
-  };
-
-  fetchProducts = async () => {
-    try {
-      const data = (await api('/product/get', 'GET')) as APIResponse;
-      const { setProducts } = this.context as AppContextType;
-      setProducts(data.data);
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   deleteProducts = async () => {
@@ -49,16 +39,15 @@ export default class ProductList extends Component {
     }
   };
 
-  componentDidMount(): void {
-    this.fetchProducts();
-  }
-
   render() {
     const { products } = this.context as AppContextType;
     return (
       <ProductListWrapper delete_loading={this.state.deleteLoading ? ' ' : ''}>
-
-        <input type="checkbox" className="delete-checkbox" style={{ display: 'none' }}/>
+        <input
+          type="checkbox"
+          className="delete-checkbox"
+          style={{ display: 'none' }}
+        />
 
         <div>
           <h2>Product List</h2>
