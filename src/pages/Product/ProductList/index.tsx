@@ -4,7 +4,7 @@ import { ROUTES } from 'constants/routes';
 import { navigate } from 'utils/navigate';
 import Product from 'components/Product';
 import AppContext from 'contexts/AppContext';
-import { APIResponse, AppContextType } from 'types';
+import { AppContextType } from 'types';
 import api from 'utils/api';
 
 interface ProductListState {
@@ -50,22 +50,6 @@ export default class ProductList extends Component {
   };
 
   componentDidMount() {
-    // const { setProducts } = this.context as AppContextType;
-    // setProducts([
-    //   {
-    //     sku: 'Excepturi vero aliqu',
-    //     name: 'Hilel Mckinney',
-    //     price: '367.00',
-    //     productType: 'book',
-    //     size: null,
-    //     weight: 34,
-    //     height: null,
-    //     length: null,
-    //     width: null,
-    //   },
-    // ]);
-    // The above was added to pass the test
-
     this.fetchProducts();
   }
 
