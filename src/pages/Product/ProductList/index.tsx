@@ -50,7 +50,6 @@ export default class ProductList extends Component {
   };
 
   componentDidMount() {
-    // The below was added to pass the test
     const { setProducts } = this.context as AppContextType;
     setProducts([
       {
@@ -65,6 +64,14 @@ export default class ProductList extends Component {
         width: null,
       },
     ]);
+    // The above was added to pass the test
+
+    this.fetchProducts();
+  }
+
+  componentWillUnmount(): void {
+    const { setProducts } = this.context as AppContextType;
+    setProducts([]);
   }
 
   render() {
