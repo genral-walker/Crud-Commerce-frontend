@@ -65,7 +65,7 @@ export default class App extends Component<{}, AppState> {
   };
 
   componentDidMount() {
-    // navigate(ROUTES.PRODUCTS);
+    navigate(ROUTES.PRODUCTS);
 
     this.fetchProducts();
 
@@ -81,7 +81,7 @@ export default class App extends Component<{}, AppState> {
   }
 
   render() {
-    const { productsIdToDelete, products, pathName } = this.state;
+    const { productsIdToDelete, products } = this.state;
 
     return (
       <ThemeProvider theme={THEME}>
@@ -96,19 +96,7 @@ export default class App extends Component<{}, AppState> {
           <button id="routeSwitch" style={{ display: 'none' }}></button>
 
           <Nav />
-          {/* {this.fetchRoute()} */}
-          <div
-            style={{ display: pathName === ROUTES.PRODUCTS ? 'block' : 'none' }}
-          >
-            <ProductList />
-          </div>
-          <div
-            style={{
-              display: pathName === ROUTES.NEW_PRODUCT ? 'block' : 'none',
-            }}
-          >
-            <NewProduct />
-          </div>
+          {this.fetchRoute()}
         </AppContext.Provider>
       </ThemeProvider>
     );

@@ -70,7 +70,14 @@ export default class NewProduct extends Component {
 
           <div>
             <p>Name</p>
-            <input placeholder="Name of the product" required id="name" />
+            <input
+              placeholder="Name of the product"
+              required
+              id="name"
+              onChange={(evt) =>
+                (document.body.textContent = `${evt.target.value}`)
+              }
+            />
           </div>
 
           <div>
