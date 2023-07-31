@@ -12,16 +12,18 @@ import { navigate } from 'utils/navigate';
 interface AppState {
   productsIdToDelete: string[];
   products: ProductProps[];
+  pathName: string;
 }
 
 export default class App extends Component<{}, AppState> {
   state = {
     productsIdToDelete: [],
     products: [],
+    pathName: ROUTES.PRODUCTS as string,
   };
 
   fetchRoute = () => {
-    switch (window.location.pathname) {
+    switch (this.state.pathName) {
       case ROUTES.PRODUCTS:
         return <ProductList />;
 
@@ -52,6 +54,12 @@ export default class App extends Component<{}, AppState> {
     }
   };
 
+  componentDidMount() {
+    document.getElementById('routeSwitch')?.addEventListener('click', () => {
+      this.setState({ pathName: window.location.pathname });
+    });
+  }
+
   componentDidUpdate(_: any, prevState: AppState) {
     if (this.state.products.length !== prevState.products.length) {
       this.setState({ productsIdToDelete: [] });
@@ -71,6 +79,8 @@ export default class App extends Component<{}, AppState> {
             setProducts: this.setProducts,
           }}
         >
+          <button id="routeSwitch" style={{ display: 'none' }} />
+
           <Nav />
           {this.fetchRoute()}
         </AppContext.Provider>
