@@ -22,7 +22,7 @@ export default class ProductList extends Component {
     const { productsIdToDelete, products, setProducts } = this
       .context as AppContextType;
 
-    if (productsIdToDelete.length) {
+    if (productsIdToDelete.length && !this.state.deleteLoading) {
       try {
         this.setState({ deleteLoading: true });
         await api('/product/delete', 'DELETE', productsIdToDelete);
@@ -42,17 +42,12 @@ export default class ProductList extends Component {
   render() {
     const { products } = this.context as AppContextType;
     return (
-      <ProductListWrapper delete_loading={''}>
+      <ProductListWrapper>
         <div>
           <h2>Product List</h2>
           <div>
             <button onClick={() => navigate(ROUTES.NEW_PRODUCT)}>ADD</button>
-            <button
-              // disabled={this.state.deleteLoading}
-              onClick={this.deleteProducts}
-            >
-              MASS DELETE
-            </button>
+            <button onClick={this.deleteProducts}>MASS DELETE</button>
           </div>
         </div>
 
