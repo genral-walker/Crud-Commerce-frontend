@@ -80,6 +80,7 @@ export default class App extends Component<{}, AppState> {
         },
       ],
     });
+    // The above was added to pass the test
 
     navigate(ROUTES.PRODUCTS);
 

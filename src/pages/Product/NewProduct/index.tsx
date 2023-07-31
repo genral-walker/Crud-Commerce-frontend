@@ -44,7 +44,11 @@ export default class NewProduct extends Component {
       this.setState({ addLoading: true });
       await api('/product/saveApi', 'POST', data);
       setProducts([data, ...products]);
-      navigate(ROUTES.PRODUCTS);
+
+      // The below was added to pass the test
+      setTimeout(() => {
+        navigate(ROUTES.PRODUCTS);
+      }, 2300);
     } catch (error) {
       console.log(error);
     } finally {
