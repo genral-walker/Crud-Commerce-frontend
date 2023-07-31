@@ -6,7 +6,7 @@ interface ProductListProps {
 
 const ProductListWrapper = styled.div<ProductListProps>`
   padding: 30px 35px;
-  pointer-events: ${({ delete_loading }) => (delete_loading ? 'none' : '')};
+  /* pointer-events: ${({ delete_loading }) => (delete_loading ? 'none' : '')}; */
   @media only screen and (max-width: 370px) {
     padding: 30px 17px;
   }
