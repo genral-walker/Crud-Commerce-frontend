@@ -46,7 +46,7 @@ export default class NewProduct extends Component {
   };
 
   render() {
-    const { switcherType } = this.state;
+    const { switcherType, addLoading } = this.state;
 
     return (
       <NewProductWrapper>
@@ -155,7 +155,7 @@ export default class NewProduct extends Component {
           )}
 
           <div>
-            <button>Save</button>
+            <button disabled={addLoading}>Save</button>
             <button type="button" onClick={() => navigate(ROUTES.PRODUCTS)}>
               Cancel
             </button>
