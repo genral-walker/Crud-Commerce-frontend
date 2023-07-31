@@ -43,7 +43,6 @@ export default class NewProduct extends Component {
     try {
       this.setState({ addLoading: true });
       await api('/product/saveApi', 'POST', data);
-      document.body.textContent = `${data.name}`;
       setProducts([data, ...products]);
       navigate(ROUTES.PRODUCTS);
     } catch (error) {
