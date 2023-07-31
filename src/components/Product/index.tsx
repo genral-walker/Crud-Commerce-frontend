@@ -23,13 +23,15 @@ export default class Product extends Component<ProductProps> {
 
     return (
       <ProductWrapper>
-        <input
-          type="checkbox"
-          className="delete-checkbox"
-          onChange={({ target: { checked } }) =>
-            updateProductIdArr(checked, sku)
-          }
-        />
+        {sku && (
+          <input
+            type="checkbox"
+            className="delete-checkbox"
+            onChange={({ target: { checked } }) =>
+              updateProductIdArr(checked, sku)
+            }
+          />
+        )}
 
         <h3>
           <span>SKU</span> <span>{sku}</span>
