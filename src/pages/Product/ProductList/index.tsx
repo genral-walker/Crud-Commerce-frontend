@@ -69,13 +69,6 @@ export default class ProductList extends Component {
     this.fetchProducts();
   }
 
-  componentDidUpdate() {
-    const { setProducts, products } = this.context as AppContextType;
-    if (!this.state.deleteLoading && !products.length) {
-      setProducts([]);
-    }
-  }
-
   render() {
     const { products } = this.context as AppContextType;
     return (
