@@ -42,19 +42,13 @@ export default class ProductList extends Component {
   render() {
     const { products } = this.context as AppContextType;
     return (
-      <ProductListWrapper delete_loading={this.state.deleteLoading ? ' ' : ''}>
-        <input
-          type="checkbox"
-          className="delete-checkbox"
-          style={{ display: 'none' }}
-        />
-
+      <ProductListWrapper delete_loading={''}>
         <div>
           <h2>Product List</h2>
           <div>
             <button onClick={() => navigate(ROUTES.NEW_PRODUCT)}>ADD</button>
             <button
-              disabled={this.state.deleteLoading}
+              // disabled={this.state.deleteLoading}
               onClick={this.deleteProducts}
             >
               MASS DELETE
