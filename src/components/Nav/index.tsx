@@ -13,7 +13,7 @@ export default class Nav extends Component {
             navigate(ROUTES.PRODUCTS)
           }
         >
-          Scandiweb Ecommerce
+          CRUD Commerce
         </h3>
       </NavWrapper>
     );
